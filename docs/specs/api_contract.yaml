@@ -1,0 +1,205 @@
+# API_CONTRACT.md
+
+## /api/plantas
+
+### GET /api/plantas
+
+| Field      | Type   | Required |
+|------------|--------|----------|
+| (none)     |        |          |
+
+- **Request Body:** None
+- **Response:** Array of `Planta` objects
+
+#### Planta
+
+| Field     | Type   |
+|-----------|--------|
+| id        | int    |
+| nombre    | str    |
+| ubicacion | str    |
+
+- **Status Codes:** 200
+- **Auth required:** No
+
+---
+
+### POST /api/plantas
+
+| Field      | Type   | Required |
+|------------|--------|----------|
+| nombre     | str    | Yes      |
+| ubicacion  | str    | Yes      |
+
+- **Request Body:** `PlantaCreate`
+
+#### PlantaCreate
+
+| Field     | Type   |
+|-----------|--------|
+| nombre    | str    |
+| ubicacion | str    |
+
+- **Response:** `Planta`
+
+#### Planta
+
+| Field     | Type   |
+|-----------|--------|
+| id        | int    |
+| nombre    | str    |
+| ubicacion | str    |
+
+- **Status Codes:** 200
+- **Auth required:** No
+
+---
+
+## /api/centros
+
+### GET /api/centros
+
+| Field      | Type   | Required |
+|------------|--------|----------|
+| (none)     |        |          |
+
+- **Request Body:** None
+- **Response:** Array of `Centro` objects
+
+#### Centro
+
+| Field     | Type   |
+|-----------|--------|
+| id        | int    |
+| nombre    | str    |
+| ubicacion | str    |
+
+- **Status Codes:** 200
+- **Auth required:** No
+
+---
+
+### POST /api/centros
+
+| Field      | Type   | Required |
+|------------|--------|----------|
+| nombre     | str    | Yes      |
+| ubicacion  | str    | Yes      |
+
+- **Request Body:** `CentroCreate`
+
+#### CentroCreate
+
+| Field     | Type   |
+|-----------|--------|
+| nombre    | str    |
+| ubicacion | str    |
+
+- **Response:** `Centro`
+
+#### Centro
+
+| Field     | Type   |
+|-----------|--------|
+| id        | int    |
+| nombre    | str    |
+| ubicacion | str    |
+
+- **Status Codes:** 200
+- **Auth required:** No
+
+---
+
+## /api/ordenes
+
+### GET /api/ordenes
+
+| Field      | Type   | Required |
+|------------|--------|----------|
+| (none)     |        |          |
+
+- **Request Body:** None
+- **Response:** Array of `Orden` objects
+
+#### Orden
+
+| Field               | Type      |
+|---------------------|-----------|
+| id                  | int       |
+| planta_id           | int       |
+| centro_id           | int       |
+| producto            | str       |
+| cantidad            | int       |
+| estado              | str       |
+| fecha_creacion      | datetime  |
+| fecha_actualizacion | datetime  |
+
+- **Status Codes:** 200
+- **Auth required:** No
+
+---
+
+### POST /api/ordenes
+
+| Field        | Type   | Required |
+|--------------|--------|----------|
+| planta_id    | int    | Yes      |
+| centro_id    | int    | Yes      |
+| producto     | str    | Yes      |
+| cantidad     | int    | Yes      |
+| estado       | str    | Yes      |
+
+- **Request Body:** `OrdenCreate`
+
+#### OrdenCreate
+
+| Field     | Type   |
+|-----------|--------|
+| planta_id | int    |
+| centro_id | int    |
+| producto  | str    |
+| cantidad  | int    |
+| estado    | str    |
+
+- **Response:** `Orden`
+
+#### Orden
+
+| Field               | Type      |
+|---------------------|-----------|
+| id                  | int       |
+| planta_id           | int       |
+| centro_id           | int       |
+| producto            | str       |
+| cantidad            | int       |
+| estado              | str       |
+| fecha_creacion      | datetime  |
+| fecha_actualizacion | datetime  |
+
+- **Status Codes:** 200
+- **Auth required:** No
+
+---
+
+## /api/kpis
+
+### GET /api/kpis
+
+| Field      | Type   | Required |
+|------------|--------|----------|
+| (none)     |        |          |
+
+- **Request Body:** None
+- **Response:** `KPIResponse`
+
+#### KPIResponse
+
+| Field                | Type   |
+|----------------------|--------|
+| total_ordenes        | int    |
+| total_productos      | int    |
+| ordenes_pendientes   | int    |
+| ordenes_completadas  | int    |
+
+- **Status Codes:** 200
+- **Auth required:** No
